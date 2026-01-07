@@ -5,7 +5,7 @@ const categoryRoutes = require('./category/categoryRouter')
 
 
 router.use('/auth', authRoutes)
-router.use('/category', categoryRoutes)
+router.use('/categories', categoryRoutes)
 
 
 module.exports = router
