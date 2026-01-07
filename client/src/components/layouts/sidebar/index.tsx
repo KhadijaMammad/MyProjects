@@ -13,9 +13,7 @@ import {
 import LeafLogo from "../../../assets/images/bymrh-logo.png.png";
 import MRH from "../../../assets/images/mrh.jpg"
 
-// interface SidebarProps {
-//   userName: string;
-// }
+
 
 const menuItems = [
   { name: "Əsas Səhifə", icon: Home, path: "/" },
@@ -27,12 +25,11 @@ const menuItems = [
 ];
 
 const Sidebar = () => {
-  // Canlı gradient rəngləri
   const gradientClass =
     "bg-gradient-to-br from-[#e11d48] via-[#c026d3] to-[#2563eb]";
 
   return (
-    <aside className="fixed font-sans left-0 top-0 bottom-0 w-64 flex flex-col justify-between bg-white dark:bg-[#1A2633] border-r border-gray-200 dark:border-gray-800 h-screen p-4 z-50 shadow-l">
+    <aside className="fixed font-sans left-0 top-0 bottom-0 w-70 flex flex-col justify-between bg-white dark:bg-[#1A2633] border-r border-gray-200 dark:border-gray-800 h-screen p-4 z-50 shadow-l">
       {/* Dekorativ Parlaq Gradient Blur */}
       <div
         className={`absolute top-0 right-0 w-32 h-32 ${gradientClass} opacity-10 blur-[60px] pointer-events-none rounded-bl-full`}
