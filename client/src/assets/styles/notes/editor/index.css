@@ -1,0 +1,104 @@
+.note-editor-wrapper {
+  border: 1px solid #e2e8f0;
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.note-editor-wrapper:focus-within {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 4px rgba(219, 234, 254, 0.5);
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-bottom: 1px solid #f1f5f9;
+  background-color: rgba(248, 250, 252, 0.8);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.toolbar-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toolbar-btn:hover {
+  background-color: #f8fafc;
+}
+
+.toolbar-btn.is-active {
+  background-color: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+
+.tiptap {
+  padding: 3rem 5rem; 
+  outline: none;
+  min-height: 500px;
+  width: 100%; 
+  color: #1e293b;
+  line-height: 1.8;
+  font-size: 1.2rem;
+}
+
+.tiptap > * {
+  max-width: 100%; 
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.tiptap h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: #0f172a;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 0.5rem;
+}
+
+.tiptap p {
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+}
+
+.tiptap ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.tiptap ul li {
+  margin-bottom: 0.5rem;
+}
+
+.tiptap strong {
+  font-weight: 700;
+  color: #020617;
+}
+
+.tiptap em {
+  font-style: italic;
+  color: #1e40af;
+}
+
+.tiptap ::selection {
+  background-color: #dbeafe;
+}

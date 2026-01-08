@@ -2,12 +2,12 @@ const ACCESS_KEY = "accessToken";
 const REFRESH_KEY = "refreshToken";
 const EXPIRE_KEY = "autoLoginExpire";
 
-export const setAuth = (access: string, refresh: string) => {
+export const setAuth = (accessToken: string, refreshToken: string) => {
   const expireDate = new Date();
   expireDate.setDate(expireDate.getDate() + 14);
 
-  localStorage.setItem(ACCESS_KEY, access);
-  localStorage.setItem(REFRESH_KEY, refresh);
+  localStorage.setItem(ACCESS_KEY, accessToken);
+  localStorage.setItem(REFRESH_KEY, refreshToken);
   localStorage.setItem(EXPIRE_KEY, expireDate.toISOString());
 };
 

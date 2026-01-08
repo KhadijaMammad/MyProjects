@@ -4,6 +4,7 @@ import ProtectedRoute from "./ProtectedRouter";
 import MainPage from "../pages/mainPage";
 import Layout from "../components/layouts/mainLayout";
 import News from "../components/news";
+import Notes from "../components/notes";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
         {
           path: "/news",
           element: <News/>
+        },
+        {
+          path: "/notes",
+          element: <Notes />
         }
 
     ]

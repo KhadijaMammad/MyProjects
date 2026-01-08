@@ -13,19 +13,17 @@ const Login = () => {
 
   const handleLogin = async (e?: React.FormEvent) => {
     e?.preventDefault();
-
-    if (!email || !password) {
-      toast.warning("Email və şifrə daxil edin");
-      return;
-    }
+    if (!email || !password) return;
 
     try {
       const response = await login({ email, password }).unwrap();
+      const { accessToken, refreshToken } = response.data;
 
-      setAuth(response.access_token, response.refresh_token);
-
-      toast.success("Uğurla daxil oldunuz!");
-      navigate("/", { replace: true });
+      if (accessToken && refreshToken) {
+        setAuth(accessToken, refreshToken);
+        toast.success("Uğurla daxil oldunuz!");
+        navigate("/", { replace: true });
+      }
     } catch (err: any) {
       toast.error(err?.data?.message || "Login uğursuz oldu");
     }
@@ -42,9 +40,21 @@ const Login = () => {
               <div className="size-10 relative">
                 <svg className="size-full" fill="none" viewBox="0 0 24 24">
                   <defs>
-                    <linearGradient id="brandGradient" x1="0%" x2="100%" y1="0%" y2="100%">
-                      <stop offset="0%" style={{ stopColor: "#d946ef", stopOpacity: 1 }} />
-                      <stop offset="100%" style={{ stopColor: "#137fec", stopOpacity: 1 }} />
+                    <linearGradient
+                      id="brandGradient"
+                      x1="0%"
+                      x2="100%"
+                      y1="0%"
+                      y2="100%"
+                    >
+                      <stop
+                        offset="0%"
+                        style={{ stopColor: "#d946ef", stopOpacity: 1 }}
+                      />
+                      <stop
+                        offset="100%"
+                        style={{ stopColor: "#137fec", stopOpacity: 1 }}
+                      />
                     </linearGradient>
                   </defs>
                   <path
