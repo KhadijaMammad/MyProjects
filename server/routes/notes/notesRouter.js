@@ -2,8 +2,11 @@ const express = require('express');
 const router = express.Router();
 const notesController = require('../../controllers/notesController'); 
 const authMiddleware = require('../../middleware/authMiddleware');
+const upload = require('../../middleware/multer/upload');
 
 router.use(authMiddleware);
+router.post('/', upload.array('images', ), notesController.create);
+
 
 router.get('/', notesController.getAll);
 router.get('/:id', notesController.getOne);

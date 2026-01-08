@@ -1,11 +1,9 @@
 const noteService = require('../services/notesService');
 
-// Bütün notları gətir (Axtarış, Qovluq, Favori və Zibil qutusu filtri ilə)
 const getAll = async (req, res) => {
     try {
         const userId = req.user.user_id;
         
-        // Query-dən gələn filtrləri yığırıq
         const filters = {
             searchQuery: req.query.search,        // ?search=salam
             folderId: req.query.folderId,         // ?folderId=5
@@ -38,11 +36,13 @@ const create = async (req, res) => {
         const { title, description, folder_id } = req.body;
         const userId = req.user.user_id;
         
+        const imagePaths = req.files ? req.files.map(file => `/uploads/${file.filename}`) : [];
         const newNote = await noteService.createNote({ 
             user_id: userId, 
             folder_id, 
             title, 
-            description 
+            description,
+            images: imagePaths
         });
         
         res.status(201).json({ success: true, data: newNote });
