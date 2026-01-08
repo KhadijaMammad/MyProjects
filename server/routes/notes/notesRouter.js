@@ -6,7 +6,6 @@ const {
   getOne,
   create,
   update,
-
   remove,
 } = require("../../controllers/notesController");
 const authMiddleware = require("../../middleware/authMiddleware");
