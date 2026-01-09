@@ -4,6 +4,7 @@ import { categoryApi } from "../services/categoryApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { newsApi } from "../services/newsApi";
 import { notesApi } from "../services/notesApi";
+import { folderApi } from "../services/folderApi";
 
 export const store = configureStore({
   reducer: {
@@ -11,13 +12,15 @@ export const store = configureStore({
     [categoryApi.reducerPath]: categoryApi.reducer,
     [newsApi.reducerPath]: newsApi.reducer,
     [notesApi.reducerPath]: notesApi.reducer,
+    [folderApi.reducerPath]: folderApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       authApi.middleware,
       categoryApi.middleware,
       newsApi.middleware,
-      notesApi.middleware
+      notesApi.middleware,
+      folderApi.middleware
     ),
 });
 

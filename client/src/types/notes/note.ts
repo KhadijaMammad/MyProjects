@@ -5,6 +5,12 @@ export interface Note {
     description: string;
     createdAt: Date;
     updatedAt: Date;
+    deletedAt?: Date;
+    folderId?: number;
+    isPinned: boolean;
+    isFavorite: boolean;
+    isDeleted: boolean;
+    imageUrl?: string;
 }
 
 export interface NoteEditorProps {
