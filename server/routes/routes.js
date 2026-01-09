@@ -5,6 +5,7 @@ const categoryRoutes = require('./category/categoryRouter')
 const newsRoutes = require('./news/newsRouter')
 const notesRoutes = require('./notes/notesRouter')
 const folderRoutes = require('./folder/folderRouter')
+const calendarRoutes = require('./calendar/calendarRouter')
 
 
 
@@ -13,6 +14,7 @@ router.use('/categories', categoryRoutes)
 router.use('/news', newsRoutes)
 router.use('/notes', notesRoutes)
 router.use('/folders', folderRoutes)
+router.use('/calendar', calendarRoutes)
 
 
 
