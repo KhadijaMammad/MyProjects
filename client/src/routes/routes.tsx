@@ -5,6 +5,7 @@ import MainPage from "../pages/mainPage";
 import Layout from "../components/layouts/mainLayout";
 import News from "../components/news";
 import Notes from "../components/notes";
+import CalendarPage from "../pages/Calendar";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
         {
           path: "/notes",
           element: <Notes />
+        },
+        {
+          path: "/calendar",
+          element: <CalendarPage/>
         }
 
     ]

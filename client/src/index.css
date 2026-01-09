@@ -3,3 +3,58 @@
   .scrollbar-hide::-webkit-scrollbar { display: none; }
   .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 }
+
+/* Google Calendar stili */
+.fc {
+  height: 100% !important;
+  border: none !important;
+  font-family: 'Inter', sans-serif;
+}
+
+.fc th {
+  padding: 12px 0 !important;
+  border-left: none !important;
+  border-right: none !important;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: #70757a;
+}
+
+.fc td {
+  border-color: #e8eaed !important;
+}
+
+.fc-theme-standard .fc-scrollgrid {
+  border: none !important;
+}
+
+.fc-event {
+  border-radius: 4px !important;
+  padding: 2px 6px !important;
+  margin: 1px 2px !important;
+  border: none !important;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.fc-event:hover {
+  opacity: 0.8;
+}
+
+.fc-toolbar-title {
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  color: #3c4043 !important;
+}
+
+.fc-button {
+  background: white !important;
+  border: 1px solid #dadce0 !important;
+  color: #3c4043 !important;
+  text-transform: capitalize !important;
+  box-shadow: none !important;
+}
+
+.fc-button-active {
+  background: #f1f3f4 !important;
+}

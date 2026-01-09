@@ -5,6 +5,7 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import { newsApi } from "../services/newsApi";
 import { notesApi } from "../services/notesApi";
 import { folderApi } from "../services/folderApi";
+import { calendarApi } from "../services/calendarApi";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     [newsApi.reducerPath]: newsApi.reducer,
     [notesApi.reducerPath]: notesApi.reducer,
     [folderApi.reducerPath]: folderApi.reducer,
+    [calendarApi.reducerPath]: calendarApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
@@ -20,7 +22,8 @@ export const store = configureStore({
       categoryApi.middleware,
       newsApi.middleware,
       notesApi.middleware,
-      folderApi.middleware
+      folderApi.middleware,
+      calendarApi.middleware
     ),
 });
 
