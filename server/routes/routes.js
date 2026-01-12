@@ -6,6 +6,7 @@ const newsRoutes = require('./news/newsRouter')
 const notesRoutes = require('./notes/notesRouter')
 const folderRoutes = require('./folder/folderRouter')
 const calendarRoutes = require('./calendar/calendarRouter')
+const googleAuthRoutes = require('../routes/auth/googleAuthRouter')
 
 
 
@@ -15,6 +16,7 @@ router.use('/news', newsRoutes)
 router.use('/notes', notesRoutes)
 router.use('/folders', folderRoutes)
 router.use('/calendar', calendarRoutes)
+router.use('/google', googleAuthRoutes)
 
 
 

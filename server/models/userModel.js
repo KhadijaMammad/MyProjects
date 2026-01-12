@@ -18,6 +18,10 @@ const Users = sequelize.define("Users", {
         type: DataTypes.STRING(100),
         allowNull: true,
     },
+    google_refresh_token: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+    },
 }, {
     tableName: 'users',
     timestamps: false
