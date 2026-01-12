@@ -1,14 +1,16 @@
 const ACCESS_KEY = "accessToken";
 const REFRESH_KEY = "refreshToken";
 const EXPIRE_KEY = "autoLoginExpire";
+const USER_DATA = "userData";
 
-export const setAuth = (accessToken: string, refreshToken: string) => {
+export const setAuth = (accessToken: string, refreshToken: string, userData: any) => {
   const expireDate = new Date();
   expireDate.setDate(expireDate.getDate() + 14);
 
   localStorage.setItem(ACCESS_KEY, accessToken);
   localStorage.setItem(REFRESH_KEY, refreshToken);
   localStorage.setItem(EXPIRE_KEY, expireDate.toISOString());
+  localStorage.setItem(USER_DATA, JSON.stringify(userData));
 };
 
 export const isAuthenticated = (): boolean => {

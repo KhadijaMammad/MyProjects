@@ -6,9 +6,11 @@ import { newsApi } from "../services/newsApi";
 import { notesApi } from "../services/notesApi";
 import { folderApi } from "../services/folderApi";
 import { calendarApi } from "../services/calendarApi";
+import authReducer from "../slices/auth/authSlice";
 
 export const store = configureStore({
   reducer: {
+    auth: authReducer,
     [authApi.reducerPath]: authApi.reducer,
     [categoryApi.reducerPath]: categoryApi.reducer,
     [newsApi.reducerPath]: newsApi.reducer,

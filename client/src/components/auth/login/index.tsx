@@ -3,10 +3,13 @@ import { useLoginMutation } from "../../../redux/services/authApi";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { setAuth } from "../../../utils/auth";
+import { setUser } from "../../../redux/slices/auth/authSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
   const [login, { isLoading, error }] = useLoginMutation();
@@ -17,10 +20,11 @@ const Login = () => {
 
     try {
       const response = await login({ email, password }).unwrap();
-      const { accessToken, refreshToken } = response.data;
+      const { accessToken, refreshToken, user } = response.data;
 
       if (accessToken && refreshToken) {
-        setAuth(accessToken, refreshToken);
+        setAuth(accessToken, refreshToken, user);
+        dispatch(setUser(user));
         toast.success("Uğurla daxil oldunuz!");
         navigate("/", { replace: true });
       }
