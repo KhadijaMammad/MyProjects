@@ -10,7 +10,7 @@ const oauth2Client = new google.auth.OAuth2(
 
 const googleAuth = {
     getGoogleAuthUrl: (req, res) => {
-        const { userId } = req.query; 
+        const userId = req.user.user_id; 
 
         if (!userId) {
             return res.status(400).json({ status: false, message: "User ID tələb olunur!" });
@@ -26,9 +26,8 @@ const googleAuth = {
         res.json({ url });
     },
 
-   
     googleCallback: async (req, res) => {
-        const { code, state } = req.query;
+        const { code, state } = req.query; // state burada userId-dir
 
         if (!code) {
             console.error("Google-dan kod gəlmədi.");
@@ -38,27 +37,31 @@ const googleAuth = {
         try {
             const { tokens } = await oauth2Client.getToken(code);
             
-            // 2. Əgər refresh_token gəlibsə (bu adətən ilk qoşulmada gəlir)
-            if (tokens.refresh_token) {
-                // User-i bazada yeniləyirik
-                await Users.update(
-                    { google_refresh_token: tokens.refresh_token },
-                    { where: { user_id: state } }
-                );
-                
-                console.log(`User ${state} üçün Google bağlantısı uğurludur.`);
+            // Yenilənəcək datanı hazırlayırıq
+            const updateData = {
+                google_access_token: tokens.access_token
+            };
 
-                // 3. İlk sinxronizasiyanı DƏRHAL başladırıq
-                // User-i bazadan tapırıq ki, tam datası ilə servisə göndərək
-                const user = await Users.findByPk(state);
-                if (user) {
-                    // Bu servis Google-dan dataları çəkib CalendarEvents cədvəlinə dolduracaq
-                    await syncEventsFromGoogle(user);
-                    console.log(`User ${state} üçün ilkin sinxronizasiya tamamlandı.`);
-                }
+            // Refresh token yalnız istifadəçi ilk dəfə icazə verəndə (prompt: consent) gəlir
+            if (tokens.refresh_token) {
+                updateData.google_refresh_token = tokens.refresh_token;
             }
 
-            // Hər şey uğurludursa, istifadəçini frontend təqviminə qaytarırıq
+            // 1. User-i bazada yeniləyirik
+            await Users.update(updateData, { 
+                where: { user_id: state } // Səndə sütun adı user_id-dirsə belə qalır
+            });
+            
+            console.log(`User ${state} üçün Google bağlantısı və tokenlər yeniləndi.`);
+
+            // 2. İlk sinxronizasiyanı başladırıq
+            const user = await Users.findOne({ where: { user_id: state } });
+            if (user) {
+                // Burada await istifadə edirik ki, bitmədən redirect etməsin
+                await syncEventsFromGoogle(user);
+                console.log(`User ${state} üçün ilkin sinxronizasiya tamamlandı.`);
+            }
+
             res.redirect('http://localhost:5173/calendar?sync=success');
 
         } catch (error) {

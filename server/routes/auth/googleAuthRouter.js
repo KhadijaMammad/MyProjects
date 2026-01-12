@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const googleAuthController = require('../../controllers/googleAuthController');
+const AuthMiddleware = require('../../middleware/authMiddleware');
 
-router.get('/url', googleAuthController.getGoogleAuthUrl);
+router.get('/url', AuthMiddleware, googleAuthController.getGoogleAuthUrl);
 
-router.get('/auth/callback', googleAuthController.googleCallback);
+router.get('/callback', googleAuthController.googleCallback);
 
 module.exports = router;
