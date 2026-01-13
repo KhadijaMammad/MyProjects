@@ -6,6 +6,8 @@ import Layout from "../components/layouts/mainLayout";
 import News from "../components/news";
 import Notes from "../components/notes";
 import CalendarPage from "../pages/Calendar";
+import { TaskPage } from "../pages/Task";
+
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +37,10 @@ export const router = createBrowserRouter([
         {
           path: "/calendar",
           element: <CalendarPage/>
+        },
+        {
+          path: "/tasks",
+          element: <TaskPage/>
         }
 
     ]

@@ -26,10 +26,10 @@ export const calendarApi = createApi({
       providesTags: ["CalendarEvent"],
     }),
 
-    getGoogleAuthUrl: builder.query<{ url: string }, void>({
-      query: () => ({
+    getGoogleAuthUrl: builder.query<{ url: string }, {userId: any}>({
+      query: ({userId}) => ({
         url: "/google/url", 
-        // params: { userId },
+        params: { userId },
       }),
     }),
 

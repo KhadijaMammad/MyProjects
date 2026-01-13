@@ -26,7 +26,6 @@ export const Sidebar = ({ isOpen, onNewEvent }: any) => {
         return;
       }
 
-      // Backend-dən icazə linkini istəyirik
       console.log("3. Backend-ə sorğu göndərilir...");
       const result = await triggerGetUrl({ userId }).unwrap();
       console.log("4. Backend-dən gələn cavab:", result);
