@@ -13,9 +13,9 @@ const sequelize = new Sequelize(
   }
 );
 
-// console.log('DB USER:', process.env.POSTGRES_USER);
-// console.log('DB PASS:', process.env.POSTGRES_PASSWORD);
-// console.log('DB NAME:', process.env.POSTGRES_DATABASE);
+console.log('DB USER:', process.env.POSTGRES_USER);
+console.log('DB PASS:', process.env.POSTGRES_PASSWORD);
+console.log('DB NAME:', process.env.POSTGRES_DATABASE);
 
 
 sequelize.authenticate()
