@@ -5,5 +5,6 @@ const authMiddleware = require('../../middleware/authMiddleware');
 
 router.post('/ai-sync', authMiddleware, calendarController.handleAICommand);
 router.get('/events', authMiddleware, calendarController.getMyEvents);
+router.post('/sync-from-google', authMiddleware, calendarController.syncWithGoogle);
 
 module.exports = router;

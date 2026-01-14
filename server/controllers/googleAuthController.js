@@ -1,23 +1,27 @@
 const { google } = require('googleapis');
-const Users = require('../models/userModel'); 
-const { syncEventsFromGoogle } = require('../services/googleCalendarService'); 
+const Users = require('../models/userModel');
+const { syncEventsFromGoogle } = require('../services/googleCalendarService');
 
-const oauth2Client = new google.auth.OAuth2(
-    process.env.GOOGLE_CLIENT_ID,
-    process.env.GOOGLE_CLIENT_SECRET,
-    process.env.GOOGLE_REDIRECT_URI
-);
+// Client yaradan köməkçi funksiya
+const createOAuthClient = () => {
+    return new google.auth.OAuth2(
+        process.env.GOOGLE_CLIENT_ID,
+        process.env.GOOGLE_CLIENT_SECRET,
+        process.env.GOOGLE_REDIRECT_URI
+    );
+};
 
 const googleAuth = {
     getGoogleAuthUrl: (req, res) => {
-        const userId = req.user.user_id; 
+        const userId = req.user.user_id;
 
         if (!userId) {
             return res.status(400).json({ status: false, message: "User ID tələb olunur!" });
         }
 
-        const url = oauth2Client.generateAuthUrl({
-            access_type: 'offline', 
+        const client = createOAuthClient(); 
+        const url = client.generateAuthUrl({
+            access_type: 'offline',
             scope: ['https://www.googleapis.com/auth/calendar'],
             prompt: 'consent',
             state: userId.toString()
@@ -27,39 +31,39 @@ const googleAuth = {
     },
 
     googleCallback: async (req, res) => {
-        const { code, state } = req.query; // state burada userId-dir
+        const { code, state } = req.query;
+        const client = createOAuthClient();
 
         if (!code) {
-            console.error("Google-dan kod gəlmədi.");
             return res.redirect('http://localhost:5173/calendar?sync=error');
         }
 
         try {
-            const { tokens } = await oauth2Client.getToken(code);
+            // Kod vasitəsilə tokenləri alırıq
+            const { tokens } = await client.getToken(code);
             
-            // Yenilənəcək datanı hazırlayırıq
             const updateData = {
-                google_access_token: tokens.access_token
+                google_access_token: tokens.access_token,
+                // Access token-in bitmə vaxtını saxlamaq məsləhətdir
+                google_token_expiry: tokens.expiry_date 
             };
 
-            // Refresh token yalnız istifadəçi ilk dəfə icazə verəndə (prompt: consent) gəlir
+            // Refresh token yalnız istifadəçi ilk dəfə təsdiq verəndə gəlir
             if (tokens.refresh_token) {
                 updateData.google_refresh_token = tokens.refresh_token;
             }
 
-            // 1. User-i bazada yeniləyirik
             await Users.update(updateData, { 
-                where: { user_id: state } // Səndə sütun adı user_id-dirsə belə qalır
+                where: { user_id: state }
             });
-            
-            console.log(`User ${state} üçün Google bağlantısı və tokenlər yeniləndi.`);
 
-            // 2. İlk sinxronizasiyanı başladırıq
+            // İstifadəçini bazadan təzə məlumatla tapırıq
             const user = await Users.findOne({ where: { user_id: state } });
+            
             if (user) {
-                // Burada await istifadə edirik ki, bitmədən redirect etməsin
-                await syncEventsFromGoogle(user);
-                console.log(`User ${state} üçün ilkin sinxronizasiya tamamlandı.`);
+                // Sinxronizasiyanı await etmədən (background-da) başlada bilərsiniz 
+                // ki, istifadəçi redirect üçün gözləməsin
+                syncEventsFromGoogle(user).catch(err => console.error("Sync Error:", err));
             }
 
             res.redirect('http://localhost:5173/calendar?sync=success');
