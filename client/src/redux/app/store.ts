@@ -7,7 +7,8 @@ import { notesApi } from "../services/notesApi";
 import { folderApi } from "../services/folderApi";
 import { calendarApi } from "../services/calendarApi";
 import authReducer from "../slices/auth/authSlice";
-import { taskApi } from "../services/taskApi"
+import { taskApi } from "../services/taskApi";
+import { dashboardApi } from "../services/dashboardApi";
 
 export const store = configureStore({
   reducer: {
@@ -19,6 +20,7 @@ export const store = configureStore({
     [folderApi.reducerPath]: folderApi.reducer,
     [calendarApi.reducerPath]: calendarApi.reducer,
     [taskApi.reducerPath]: taskApi.reducer,
+    [dashboardApi.reducerPath]: dashboardApi.reducer,
 
   },
   middleware: (getDefaultMiddleware) =>
@@ -30,6 +32,7 @@ export const store = configureStore({
       folderApi.middleware,
       calendarApi.middleware,
       taskApi.middleware,
+      dashboardApi.middleware,
     ),
 });
 

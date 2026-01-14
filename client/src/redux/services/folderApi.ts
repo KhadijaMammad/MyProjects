@@ -6,10 +6,13 @@ interface FolderResponse {
   data: Folder[];
 }
 
+const API_BASE_URL = import.meta.env.VITE_BASE_URL
+
+
 export const folderApi = createApi({
   reducerPath: 'folderApi',
   baseQuery: fetchBaseQuery({ 
-    baseUrl: 'http://localhost:8000/api',
+    baseUrl: API_BASE_URL,
     prepareHeaders: (headers) => {
       const token = localStorage.getItem('accessToken');
       if (token) headers.set('Authorization', `Bearer ${token}`);

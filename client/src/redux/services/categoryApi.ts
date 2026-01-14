@@ -1,10 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { Category } from "../../types/news/category";
 
+const API_BASE_URL = import.meta.env.VITE_BASE_URL
+
+
 export const categoryApi = createApi({
   reducerPath: "categoryApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8000/api",
+    baseUrl: API_BASE_URL,
   }),
   endpoints: (builder) => ({
     getAllCategories: builder.query<Category[], void>({

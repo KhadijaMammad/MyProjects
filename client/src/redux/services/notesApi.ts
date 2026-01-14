@@ -1,10 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+
+const API_BASE_URL = import.meta.env.VITE_BASE_URL
+
 export const notesApi = createApi({
   reducerPath: 'notesApi',
   baseQuery: fetchBaseQuery({ 
-    baseUrl: 'http://localhost:8000/api',
-    // BURADAN BAŞLAYIR: Header-ləri avtomatik əlavə edirik
+    baseUrl: API_BASE_URL,
     prepareHeaders: (headers) => {
       const token = localStorage.getItem('accessToken'); 
       if (token) {
