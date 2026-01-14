@@ -17,7 +17,7 @@ const CategoryDropdown: React.FC<CategoryDropdownProps> = ({
     "bg-gradient-to-br from-[#e11d48] via-[#c026d3] to-[#2563eb]";
 
   return (
-    <div className="relative inline-block text-left w-64">
+    <div className="relative inline-block text-left w-64 p-2 mt-3">
       {/* Trigger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}

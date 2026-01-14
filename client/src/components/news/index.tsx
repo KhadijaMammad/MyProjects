@@ -26,7 +26,7 @@ const NewsPage = () => {
   } = useGetNewsQuery({
     category_id: selectedCategoryId,
     page: page,
-    lang: activeLang, // Dinamik olaraq seçilmiş dili göndəririk
+    lang: activeLang, 
   });
 
   useEffect(() => {
@@ -144,7 +144,7 @@ const NewsPage = () => {
           </div>
         </div>
 
-        {/* DETAIL SECTION - Həmişə Sağda qalır, Arxa fon QARA */}
+        {/* DETAIL SECTION */}
         {selectedNews && (
           <div
             className="lg:col-span-7 bg-[#000000] rounded-3xl border border-gray-800 overflow-hidden shadow-2xl animate-in slide-in-from-left duration-500 max-h-[85vh] overflow-y-auto scrollbar-hide sticky top-0"
