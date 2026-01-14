@@ -1,6 +1,6 @@
 export interface GoogleDateTime {
   dateTime: string;
-  timeZone: string;
+  timeZone?: string;
 }
 
 export interface AICalendarEvent {

@@ -10,10 +10,8 @@ export const calendarApi = createApi({
     baseUrl: "http://localhost:8000/api",
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("accessToken");
-      console.log("Göndərilən Token:", token)
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
-        console.log("Headers-ə əlavə olunan tam string:", `Bearer ${token}`);
       }
       return headers;
     },
@@ -22,23 +20,43 @@ export const calendarApi = createApi({
   endpoints: (builder) => ({
     // 1. Mövcud Eventləri gətirən query
     getCalendarEvents: builder.query<{ success: boolean; data: CalendarEventDB[] }, void>({
-      query: () => `calendar/events?t=${Date.now()}`,
+      query: () => `calendar/events`,
       providesTags: ["CalendarEvent"],
     }),
 
-    getGoogleAuthUrl: builder.query<{ url: string }, {userId: any}>({
-      query: ({userId}) => ({
-        url: "/google/url", 
-        params: { userId },
+    // 2. GOOGLE-DAN SİNXRONİZASİYA ET (BU ÇOX VACİBDİR!)
+    triggerGoogleSync: builder.mutation<{ success: boolean; count: number }, void>({
+      query: () => ({
+        url: "/calendar/sync-from-google",
+        method: "POST",
       }),
+      // Sinxronizasiya bitəndə avtomatik olaraq list-i yeniləyir
+      invalidatesTags: ["CalendarEvent"],
     }),
 
-    // 3. Mövcud AI Sync mutation
+    // 3. Google Auth URL-i gətir
+    getGoogleAuthUrl: builder.query<{ url: string }, { userId: string | number }>({
+  query: ({ userId }) => ({
+    url: "/google/url",
+    params: { userId },
+  }),
+}),
+
+    // 4. AI vasitəsilə sinxron et
     syncAICalendarEvent: builder.mutation<{ success: boolean; message: string; data?: any }, AISyncPayload>({
       query: (body) => ({
         url: "/calendar/ai-sync",
         method: "POST",
         body,
+      }),
+      invalidatesTags: ["CalendarEvent"],
+    }),
+
+    // 5. Event-i silmək (lazım olacaq)
+    deleteCalendarEvent: builder.mutation<{ success: boolean }, string>({
+      query: (googleEventId) => ({
+        url: `/calendar/events/${googleEventId}`,
+        method: "DELETE",
       }),
       invalidatesTags: ["CalendarEvent"],
     }),
@@ -48,5 +66,7 @@ export const calendarApi = createApi({
 export const {
   useGetCalendarEventsQuery,
   useSyncAICalendarEventMutation,
-  useLazyGetGoogleAuthUrlQuery, 
+  useLazyGetGoogleAuthUrlQuery,
+  useTriggerGoogleSyncMutation, // Yeni əlavə etdik
+  useDeleteCalendarEventMutation // Yeni əlavə etdik
 } = calendarApi;
