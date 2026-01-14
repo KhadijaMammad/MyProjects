@@ -98,13 +98,24 @@ Google APIs & OAuth2: Google xidmətləri ilə tam inteqrasiya.
 
 
 🗑 Zibil Qutusu Məntiqi
+
 Sistemdə silinən datalar dərhal itmir. node-cron vasitəsilə qurulmuş sistem 30 gün boyunca datanı saxlayır və müddət bitdikdə avtomatik olaraq verilənlər bazasından tamamilə təmizləyir.
+
+
 🧠 AI İnteqrasiyası
+
 Layihənin 50%-i AI modellərinin backend-ə inteqrasiyası üzərində qurulub. Bu, yalnız mətn analizi deyil, həm də istifadəçi davranışına uyğun tapşırıqların yaradılması və çoxlu agentli (Multi-agent) müzakirələri əhatə edir.
+
+
 🚀 Quraşdırma
+
 Reponu klonlayın.
+
 client və server qovluqlarında npm install əmrini icra edin.
+
 .env faylında Google OAuth və PostgreSQL məlumatlarını daxil edin.
+
 npm run dev (frontend) və npm start (backend) ilə layihəni başladın.
+
 
 
