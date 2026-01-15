@@ -9,6 +9,7 @@ const calendarRoutes = require('./calendar/calendarRouter');
 const googleAuthRoutes = require('../routes/auth/googleAuthRouter');
 const taskRoutes = require('./task/taskRouter');
 const dashboardRoutes = require('./dashboard/dashboardRouter');
+const gemTalkRoutes = require('./gemtalk/gemTalkRouter')
 
 
 
@@ -21,6 +22,7 @@ router.use('/calendar', calendarRoutes)
 router.use('/google', googleAuthRoutes)
 router.use('/tasks', taskRoutes)
 router.use('/dashboard', dashboardRoutes)
+router.use('/gemtalk', gemTalkRoutes)
 
 
 
