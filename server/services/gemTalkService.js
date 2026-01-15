@@ -23,8 +23,8 @@ const saveChatToDB = async (id, history) => {
 const getUserTalks = async (userId) => {
     return await GemTalk.findAll({
         where: { user_id: userId },
-        order: [['createdAt', 'DESC']], // Modeldə field: 'created_at' olaraq bağlamışıq
-        attributes: ['id', 'topic', 'rounds', 'status', 'createdAt'] // createdAt istifadə et
+        order: [['createdAt', 'DESC']], 
+        attributes: ['id', 'topic', 'rounds', 'status', 'createdAt'] 
     });
 };
 

@@ -38,7 +38,7 @@ const NewsPage = () => {
     "bg-gradient-to-br from-[#e11d48] via-[#c026d3] to-[#2563eb]";
 
   return (
-    <div className="flex flex-col gap-8 min-h-screen pb-10 font-['Inter']">
+    <div className="flex flex-col gap-8 h-screen pb-10 font-['Inter']">
       {/* DROPDOWN - Yuxarıda tək */}
       <div className="flex justify-start">
         <div dir="ltr">
@@ -49,7 +49,7 @@ const NewsPage = () => {
       </div>
 
       {/* BAŞLIQ */}
-      <div className={selectedNews ? "lg:w-[40%]" : "max-w-4xl mx-auto w-full"}>
+      <div className={selectedNews ? "lg:w-[40%]" : "max-w-4xl  mx-auto w-full"}>
         <h2
           className={`text-2xl font-black italic uppercase tracking-tighter text-[#111418] dark:text-white mb-2 ${textAlign}`}
           dir={textDirection}
@@ -127,11 +127,11 @@ const NewsPage = () => {
             ))
           )}
 
-          <div className="flex justify-center pt-4">
+          <div className="flex justify-center">
             <button
               onClick={() => setPage((prev) => prev + 1)}
               disabled={isFetching}
-              className="px-8 py-3 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full text-sm font-bold transition-all flex items-center gap-2"
+              className="px-8 py-3 bg-gray-600 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full text-sm font-bold transition-all flex items-center gap-2"
             >
               {isFetching ? (
                 <Loader2 size={16} className="animate-spin" />

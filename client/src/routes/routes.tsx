@@ -7,6 +7,7 @@ import News from "../components/news";
 import Notes from "../components/notes";
 import CalendarPage from "../pages/Calendar";
 import { TaskPage } from "../pages/Task";
+import GemTalkPage from "../pages/GemTalk";
 
 
 export const router = createBrowserRouter([
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
         {
           path: "/tasks",
           element: <TaskPage/>
+        },
+        {
+          path: "/gemtalk",
+          element: <GemTalkPage/>
         }
 
     ]

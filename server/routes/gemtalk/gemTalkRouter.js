@@ -5,6 +5,6 @@ const AuthMiddleware = require('../../middleware/authMiddleware');
 
 router.post('/discuss', AuthMiddleware, startDiscussion);
 router.get('/history', AuthMiddleware, getAllTalks);
-router.get('/history/:id', AuthMiddleware, getOneTalk);
+router.get('/:id', AuthMiddleware, getOneTalk);
 
 module.exports = router;

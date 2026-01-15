@@ -9,6 +9,7 @@ import { calendarApi } from "../services/calendarApi";
 import authReducer from "../slices/auth/authSlice";
 import { taskApi } from "../services/taskApi";
 import { dashboardApi } from "../services/dashboardApi";
+import {gemTalkApi} from "../services/gemtalkApi";
 
 export const store = configureStore({
   reducer: {
@@ -21,6 +22,7 @@ export const store = configureStore({
     [calendarApi.reducerPath]: calendarApi.reducer,
     [taskApi.reducerPath]: taskApi.reducer,
     [dashboardApi.reducerPath]: dashboardApi.reducer,
+    [gemTalkApi.reducerPath]: gemTalkApi.reducer,
 
   },
   middleware: (getDefaultMiddleware) =>
@@ -33,6 +35,7 @@ export const store = configureStore({
       calendarApi.middleware,
       taskApi.middleware,
       dashboardApi.middleware,
+      gemTalkApi.middleware,
     ),
 });
 
