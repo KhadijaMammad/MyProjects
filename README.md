@@ -1,117 +1,100 @@
- AI-Powered Personal Workspace
+# AI-Powered Personal Workspace 🤖
 
+[![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=white)](https://reactjs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-Fərdi məhsuldarlığı artırmaq üçün süni intellekt (AI) modelləri ilə təchiz olunmuş, hər tərəfli iş mühitidir. Bu platforma təqvim, qeydlər, tapşırıqlar və xəbərləri bir araya gətirməklə yanaşı, unikal AI Discussion (GemTalks) modulu ilə fərqlənir.
+A comprehensive productivity platform powered by AI models, designed to enhance individual efficiency. The platform combines calendar, notes, tasks, and news features, and stands out with its unique AI Discussion module (**GemTalks**).
 
+---
 
-🌟 Əsas Modullar və Özəlliklər
+## Table of Contents 📚
+- [Core Modules and Features](#core-modules-and-features-)
+  - [GemTalks (AI Discussion Hub)](#gemtalks-ai-discussion-hub-)
+  - [Advanced Calendar System](#advanced-calendar-system-)
+  - [Smart Notes (Tiptap Rich-Text)](#smart-notes-tiptap-rich-text-)
+  - [Task Management](#task-management-)
+  - [Dynamic News Feed](#dynamic-news-feed-)
+- [Technical Stack](#technical-stack-)
+  - [Frontend](#frontend-)
+  - [Backend](#backend-)
+- [Trash System Logic](#trash-system-logic-)
+- [AI Integration](#ai-integration-)
+- [Setup](#setup-)
 
+---
 
-🤖 GemTalks (AI Discussion Hub)
+## Core Modules and Features 🌟
 
-Layihənin ən innovativ hissəsi olan GemTalks, bir mövzu ətrafında bir neçə AI modelinin real-vaxt rejimində müzakirəsini təmin edir:
+### GemTalks (AI Discussion Hub) 💬
+Enables real-time discussions among multiple AI models around a single topic:
 
-Multi-AI Collaboration: 1 Moderator AI tərəfindən idarə olunan 4 fərqli AI mütəxəssisi.
+- **Multi-AI Collaboration**: Four specialized AI agents coordinated by one Moderator AI.  
+- **Custom Rounds**: Users can define how many discussion rounds the conversation will have.  
+- **AI Summary**: At the end, the moderator provides a concise final summary.  
 
-Custom Rounds: İstifadəçi müzakirənin neçə raund davam edəcəyini təyin edir.
+### Advanced Calendar System 📅
+Supports both local and global scheduling:
 
-AI Summary: Müzakirənin sonunda moderator tərəfindən yekun xülasə təqdim edilir.
+- **Google Calendar Sync**: OAuth2-based integration with any Google account.  
+- **Bidirectional Sync**: Events created on the platform are synced to Google Calendar, and existing Google events are synced back.  
+- **FullCalendar Integration**: Fast and interactive calendar visualization.  
 
+### Smart Notes (Tiptap Rich-Text) 📝
+Structured and visual note management:
 
-📅 Advanced Calendar System
+- **Rich Text Editing**: Headings, lists, bold, italic, and more.  
+- **Media Support**: Image uploads and inline media embedding.  
+- **Export to PDF**: Notes can be exported directly using jspdf and html2canvas.  
 
+### Task Management ✅
 
-Həm lokal, həm də qlobal idarəetmə:
+- **AI Task Generation**: Automatic task creation from user input using AI.  
+- **Priority & Deadline**: Task prioritization and deadline management.  
+- **Auto-Cleanup**: Automatic handling of expired tasks.  
 
-Google Calendar Sync: İstənilən Google hesabı ilə OAuth2 inteqrasiyası.
+### Dynamic News Feed 📰
 
-Bidirectional Sync: Saytda yaradılan eventlər avtomatik Google Calendar-a, ordakılar isə sayta sinxronizasiya olunur.
+- **Multi-language Support**: News adapts to the user’s selected language.  
+- **Infinite Scroll**: Initial load of 30 articles with a “Load More” feature.  
+- **Smart Categorization**: Automatic categorization of news content.  
 
-FullCalendar Integration: Sürətli və interaktiv vizuallaşdırma.
+---
 
+## Technical Stack 🛠
 
-📝 Smart Notes (Tiptap Rich-Text)
+### Frontend ⚛️
+- **Vite + React + TypeScript**: High-performance development with type safety.  
+- **Redux Toolkit & RTK Query**: Efficient management of complex state and API requests.  
+- **Tailwind CSS & Framer Motion**: Modern UI design with smooth animations.  
+- **Lucide React**: Minimalistic and modern icon set.  
 
+### Backend 🖥️
+- **Node.js (Express.js)**: Scalable server architecture.  
+- **PostgreSQL & Sequelize ORM**: Relational database structure managed via pgAdmin4.  
+- **JWT & Bcrypt**: Secure authentication and password hashing.  
+- **Multer**: File and image upload management.  
+- **Node-cron**: Scheduled jobs including 30-day soft delete (trash system).  
+- **Google APIs & OAuth2**: Full integration with Google services.  
 
-Qeydlərin strukturlaşdırılmış və vizual idarəedilməsi:
+---
 
-Rich Text Editing: Heading, list, bold, italic və s.
+## Trash System Logic 🗑️
+Deleted data is not removed immediately. A node-cron–based system retains deleted data for 30 days, after which it is permanently removed from the database automatically.  
 
-Media Support: Şəkillərin yüklənməsi və mətn daxilində yerləşdirilməsi.
+---
 
-Export to PDF: jspdf və html2canvas vasitəsilə qeydləri birbaşa PDF formatında yükləmə imkanı.
+## AI Integration 🤖
+Approximately 50% of the project is built around integrating AI models into the backend. This includes text analysis, behavior-based task generation, and multi-agent AI discussions.  
 
+---
 
-✅ Task Management
-
-
-AI Task Generation: Süni intellekt vasitəsilə inputdan avtomatik task yaradılması.
-
-Priority & Deadline: Tapşırıqların prioritetləşdirilməsi və son tarix təyini.
-
-Auto-Cleanup: Vaxtı bitmiş taskların avtomatik idarəedilməsi.
-
-
-📰 Dynamic News Feed
-
-
-Multi-language Support: İstifadəçinin seçdiyi dilə uyğun xəbərlər.
-
-Infinite Scroll: İlk 30 xəbər və "Load More" funksionallığı.
-
-Smart Categorization: Xəbərlərin avtomatik kateqoriyalara bölünməsi
-
-
-
-🛠 Texniki Stack
-
-
-Frontend
-
-Vite + React + TypeScript: Yüksək sürətli inkişaf və tip təhlükəsizliyi.
-
-Redux Toolkit & RTK Query: Mürəkkəb state-lərin və API sorğularının idarəedilməsi.
-
-Tailwind CSS & Framer Motion: Modern interfeys və hamar animasiyalar.
-
-Lucide React: Minimalist və modern ikon dəsti.
-
-
-Backend
-
-Node.js (Express.js): Ölçeklenebilir server arxitekturası.
-
-PostgreSQL & Sequelize ORM: Relasiyalı data strukturu (pgAdmin4 ilə idarə olunur).
-
-JWT & Bcrypt: Təhlükəsiz autentifikasiya və parolların hash-lənməsi.
-
-Multer: Şəkillərin və faylların idarəedilməsi.
-
-Node-cron: 30 günlük "zibil qutusu" (soft delete) və digər planlı tapşırıqlar.
-
-Google APIs & OAuth2: Google xidmətləri ilə tam inteqrasiya.
-
-
-
-🗑 Zibil Qutusu Məntiqi
-
-Sistemdə silinən datalar dərhal itmir. node-cron vasitəsilə qurulmuş sistem 30 gün boyunca datanı saxlayır və müddət bitdikdə avtomatik olaraq verilənlər bazasından tamamilə təmizləyir.
-
-
-🧠 AI İnteqrasiyası
-
-Layihənin 50%-i AI modellərinin backend-ə inteqrasiyası üzərində qurulub. Bu, yalnız mətn analizi deyil, həm də istifadəçi davranışına uyğun tapşırıqların yaradılması və çoxlu agentli (Multi-agent) müzakirələri əhatə edir.
-
-
-🚀 Quraşdırma
-
-Reponu klonlayın.
-
-client və server qovluqlarında npm install əmrini icra edin.
-
-.env faylında Google OAuth və PostgreSQL məlumatlarını daxil edin.
-
-npm run dev (frontend) və npm start (backend) ilə layihəni başladın.
-
-
-
+## Setup ⚡
+1. Clone the repository.  
+2. Run `npm install` in both `client` and `server` directories.  
+3. Configure Google OAuth and PostgreSQL credentials in the `.env` file.  
+4. Start the project:  
+   - `npm run dev` (frontend)  
+   - `npm start` (backend)  
