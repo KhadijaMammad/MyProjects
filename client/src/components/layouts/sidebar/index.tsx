@@ -10,8 +10,8 @@ import {
   Leaf,
   Zap,
 } from "lucide-react";
-import LeafLogo from "../../../assets/images/bymrh-logo.png.png";
-import MRH from "../../../assets/images/mrh.jpg"
+// import LeafLogo from "../../../assets/images/bymrh-logo.png.png";
+import UserAvatar from "../../../assets/images/User-avatar.svg.webp"
 
 
 
@@ -38,17 +38,18 @@ const Sidebar = () => {
       <div className="flex flex-col gap-8 relative z-10">
         {/* İstifadəçi Məlumatı */}
         <div className="flex items-center gap-3 px-2 py-2">
-          <div
+           <div
             className="rounded-full h-12 w-12 border-2 border-gray-100 dark:border-gray-700 shadow-md overflow-hidden bg-gray-200 shrink-0"
             style={{
-              backgroundImage: `url(${MRH})`,
+              backgroundImage: `url(${UserAvatar})`,
               backgroundSize: "cover",
             }}
           ></div>
+        
           <div className="flex flex-col truncate">
             <span className="text-sm font-black text-black dark:text-white flex items-center gap-1">
-              <span className="truncate">MRH</span>
-              <img src={LeafLogo} alt="" className="w-3.5 top-1" />
+              <span className="truncate">Personal</span>
+              {/* <img src={LeafLogo} alt="" className="w-3.5 top-1" /> */}
             </span>
             <span className="text-xs font-bold text-gray-500 dark:text-gray-400">
               Təsisçi

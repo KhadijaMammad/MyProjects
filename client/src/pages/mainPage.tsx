@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 const Dashboard: React.FC = () => {
   const { data, error, isLoading } = useGetDashboardDataQuery(undefined);
 
-  // Sənin o qəşəng gradientin
   const gradientClass =
     "bg-gradient-to-br from-[#e11d48] via-[#c026d3] to-[#2563eb]";
 
@@ -29,7 +28,7 @@ const Dashboard: React.FC = () => {
         <h1 className="text-3xl font-black text-gray-800 tracking-tight">
           Sabahın xeyir,{" "}
           <span className="text-transparent bg-clip-text bg-linear-to-r from-[#e11d48] to-[#2563eb]">
-            MRH
+            Khadija
           </span>
         </h1>
         <p className="text-gray-500 font-medium mt-1">Gününüz uğurlu keçsin!</p>
@@ -38,7 +37,6 @@ const Dashboard: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* 1. CALENDAR SECTION */}
         <div className="relative group">
-          {/* Bu o "Glow" effekti yaradan gizli qatdır */}
           <div
             className={`absolute -inset-0.5 ${gradientClass} rounded-3xl blur opacity-10 group-hover:opacity-30 transition duration-500`}
           ></div>

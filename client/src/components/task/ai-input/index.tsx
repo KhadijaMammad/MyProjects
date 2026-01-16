@@ -35,7 +35,7 @@ export const AIInput = () => {
                     ✨
                 </div>
                 <div className="bg-slate-50 rounded-2xl p-3 text-sm text-slate-600 max-w-[80%]">
-                    Hello MRH. Tell me what needs to be done, and I'll add it to your task list.
+                    Hello, Khadija. Tell me what needs to be done, and I'll add it to your task list.
                 </div>
             </div>
 
