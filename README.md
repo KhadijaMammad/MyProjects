@@ -1,9 +1,7 @@
-# byMRH.az
-🚀 byMRH - AI-Powered Personal Workspace
+ AI-Powered Personal Workspace
 
-Live Demo: 
 
-byMRH, fərdi məhsuldarlığı artırmaq üçün süni intellekt (AI) modelləri ilə təchiz olunmuş, hər tərəfli iş mühitidir. Bu platforma təqvim, qeydlər, tapşırıqlar və xəbərləri bir araya gətirməklə yanaşı, unikal AI Discussion (GemTalks) modulu ilə fərqlənir.
+Fərdi məhsuldarlığı artırmaq üçün süni intellekt (AI) modelləri ilə təchiz olunmuş, hər tərəfli iş mühitidir. Bu platforma təqvim, qeydlər, tapşırıqlar və xəbərləri bir araya gətirməklə yanaşı, unikal AI Discussion (GemTalks) modulu ilə fərqlənir.
 
 
 🌟 Əsas Modullar və Özəlliklər
@@ -14,8 +12,6 @@ byMRH, fərdi məhsuldarlığı artırmaq üçün süni intellekt (AI) modellər
 Layihənin ən innovativ hissəsi olan GemTalks, bir mövzu ətrafında bir neçə AI modelinin real-vaxt rejimində müzakirəsini təmin edir:
 
 Multi-AI Collaboration: 1 Moderator AI tərəfindən idarə olunan 4 fərqli AI mütəxəssisi.
-
-Real-time Audio: Fikirlər həm mətn, həm də səsli (TTS) şəkildə təqdim olunur.
 
 Custom Rounds: İstifadəçi müzakirənin neçə raund davam edəcəyini təyin edir.
 
