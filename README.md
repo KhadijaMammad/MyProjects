@@ -1,117 +1,74 @@
- AI-Powered Personal Workspace
+AI-Powered Personal Workspace
 
+A comprehensive productivity platform powered by artificial intelligence (AI) models, designed to enhance individual efficiency. The platform brings together calendar, notes, tasks, and news features, and stands out with its unique AI Discussion module (GemTalks).
 
-Fərdi məhsuldarlığı artırmaq üçün süni intellekt (AI) modelləri ilə təchiz olunmuş, hər tərəfli iş mühitidir. Bu platforma təqvim, qeydlər, tapşırıqlar və xəbərləri bir araya gətirməklə yanaşı, unikal AI Discussion (GemTalks) modulu ilə fərqlənir.
+Core Modules and Features
 
+GemTalks (AI Discussion Hub)
 
-🌟 Əsas Modullar və Özəlliklər
+GemTalks is the most innovative part of the project, enabling real-time discussions among multiple AI models around a single topic:
 
+Multi-AI Collaboration: Four specialized AI agents coordinated by one Moderator AI.
+Custom Rounds: Users can define how many discussion rounds the conversation will have.
+AI Summary: At the end of the discussion, the moderator provides a concise final summary.
 
-🤖 GemTalks (AI Discussion Hub)
+Advanced Calendar System
 
-Layihənin ən innovativ hissəsi olan GemTalks, bir mövzu ətrafında bir neçə AI modelinin real-vaxt rejimində müzakirəsini təmin edir:
+Supports both local and global scheduling:
 
-Multi-AI Collaboration: 1 Moderator AI tərəfindən idarə olunan 4 fərqli AI mütəxəssisi.
+Google Calendar Sync: OAuth2-based integration with any Google account.
+Bidirectional Sync: Events created on the platform are synced to Google Calendar, and existing Google events are synced back to the platform.
+FullCalendar Integration: Fast and interactive calendar visualization.
 
-Custom Rounds: İstifadəçi müzakirənin neçə raund davam edəcəyini təyin edir.
+Smart Notes (Tiptap Rich-Text)
 
-AI Summary: Müzakirənin sonunda moderator tərəfindən yekun xülasə təqdim edilir.
+Structured and visual note management:
 
+Rich Text Editing: Headings, lists, bold, italic, and more.
+Media Support: Image uploads and inline media embedding.
+Export to PDF: Notes can be exported directly to PDF using jspdf and html2canvas.
 
-📅 Advanced Calendar System
+Task Management
 
+AI Task Generation: Automatic task creation from user input using AI.
+Priority & Deadline: Task prioritization and deadline management.
+Auto-Cleanup: Automatic handling of expired tasks.
 
-Həm lokal, həm də qlobal idarəetmə:
+Dynamic News Feed
 
-Google Calendar Sync: İstənilən Google hesabı ilə OAuth2 inteqrasiyası.
+Multi-language Support: News content adapts to the user’s selected language.
+Infinite Scroll: Initial load of 30 articles with a “Load More” feature.
+Smart Categorization: Automatic categorization of news content.
 
-Bidirectional Sync: Saytda yaradılan eventlər avtomatik Google Calendar-a, ordakılar isə sayta sinxronizasiya olunur.
-
-FullCalendar Integration: Sürətli və interaktiv vizuallaşdırma.
-
-
-📝 Smart Notes (Tiptap Rich-Text)
-
-
-Qeydlərin strukturlaşdırılmış və vizual idarəedilməsi:
-
-Rich Text Editing: Heading, list, bold, italic və s.
-
-Media Support: Şəkillərin yüklənməsi və mətn daxilində yerləşdirilməsi.
-
-Export to PDF: jspdf və html2canvas vasitəsilə qeydləri birbaşa PDF formatında yükləmə imkanı.
-
-
-✅ Task Management
-
-
-AI Task Generation: Süni intellekt vasitəsilə inputdan avtomatik task yaradılması.
-
-Priority & Deadline: Tapşırıqların prioritetləşdirilməsi və son tarix təyini.
-
-Auto-Cleanup: Vaxtı bitmiş taskların avtomatik idarəedilməsi.
-
-
-📰 Dynamic News Feed
-
-
-Multi-language Support: İstifadəçinin seçdiyi dilə uyğun xəbərlər.
-
-Infinite Scroll: İlk 30 xəbər və "Load More" funksionallığı.
-
-Smart Categorization: Xəbərlərin avtomatik kateqoriyalara bölünməsi
-
-
-
-🛠 Texniki Stack
-
+Technical Stack
 
 Frontend
 
-Vite + React + TypeScript: Yüksək sürətli inkişaf və tip təhlükəsizliyi.
-
-Redux Toolkit & RTK Query: Mürəkkəb state-lərin və API sorğularının idarəedilməsi.
-
-Tailwind CSS & Framer Motion: Modern interfeys və hamar animasiyalar.
-
-Lucide React: Minimalist və modern ikon dəsti.
-
+Vite + React + TypeScript: High-performance development with type safety.
+Redux Toolkit & RTK Query: Efficient management of complex state and API requests.
+Tailwind CSS & Framer Motion: Modern UI design with smooth animations.
+Lucide React: Minimalistic and modern icon set.
 
 Backend
 
-Node.js (Express.js): Ölçeklenebilir server arxitekturası.
+Node.js (Express.js): Scalable server architecture.
+PostgreSQL & Sequelize ORM: Relational database structure managed via pgAdmin4.
+JWT & Bcrypt: Secure authentication and password hashing.
+Multer: File and image upload management.
+Node-cron: Scheduled jobs including a 30-day soft delete (trash system).
+Google APIs & OAuth2: Full integration with Google services.
 
-PostgreSQL & Sequelize ORM: Relasiyalı data strukturu (pgAdmin4 ilə idarə olunur).
+Trash System Logic
 
-JWT & Bcrypt: Təhlükəsiz autentifikasiya və parolların hash-lənməsi.
+Deleted data is not removed immediately. A node-cron–based system retains deleted data for 30 days, after which it is permanently removed from the database automatically.
 
-Multer: Şəkillərin və faylların idarəedilməsi.
+AI Integration
 
-Node-cron: 30 günlük "zibil qutusu" (soft delete) və digər planlı tapşırıqlar.
+Approximately 50% of the project is built around integrating AI models into the backend. This includes not only text analysis, but also behavior-based task generation and multi-agent AI discussions.
 
-Google APIs & OAuth2: Google xidmətləri ilə tam inteqrasiya.
+Setup
 
-
-
-🗑 Zibil Qutusu Məntiqi
-
-Sistemdə silinən datalar dərhal itmir. node-cron vasitəsilə qurulmuş sistem 30 gün boyunca datanı saxlayır və müddət bitdikdə avtomatik olaraq verilənlər bazasından tamamilə təmizləyir.
-
-
-🧠 AI İnteqrasiyası
-
-Layihənin 50%-i AI modellərinin backend-ə inteqrasiyası üzərində qurulub. Bu, yalnız mətn analizi deyil, həm də istifadəçi davranışına uyğun tapşırıqların yaradılması və çoxlu agentli (Multi-agent) müzakirələri əhatə edir.
-
-
-🚀 Quraşdırma
-
-Reponu klonlayın.
-
-client və server qovluqlarında npm install əmrini icra edin.
-
-.env faylında Google OAuth və PostgreSQL məlumatlarını daxil edin.
-
-npm run dev (frontend) və npm start (backend) ilə layihəni başladın.
-
-
-
+Clone the repository.
+Run npm install in both the client and server directories.
+Configure Google OAuth and PostgreSQL credentials in the .env file.
+Start the project using npm run dev (frontend) and npm start (backend).
